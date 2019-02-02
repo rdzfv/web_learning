@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div.color_animition{
+            width:100px;
+            height:100px;
+            background:red;
+            animation:myfirst 5s;
+            -moz-animation:myfirst 5s;
+            -webkit-animation:myfirst 5s;
+            -o-animation:myfirst 5s;
+        }
+
+        @keyframes myfirst{
+            0%   {background:red;}
+            25%  {background:yellow;}
+            50%  {background:blue;}
+            100% {background:green;}
+        }
+
+        @-moz-keyframes myfirst {
+            0%   {background:red;}
+            25%  {background:yellow;}
+            50%  {background:blue;}
+            100% {background:green;}
+        }
+
+        @-webkit-keyframes myfirst {
+            0%   {background:red;}
+            25%  {background:yellow;}
+            50%  {background:blue;}
+            100% {background:green;}
+        }
+
+        @-o-keyframes myfirst {
+            0%   {background:red;}
+            25%  {background:yellow;}
+            50%  {background:blue;}
+            100% {background:green;}
+        }
+        /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        div.color_pos_animition{
+            width:100px;
+            height:100px;
+            background:red;
+            position:relative;
+            animation:mysecond 5s;
+            -moz-animation:mysecond 5s;
+            -webkit-animation:mysecond 5s;
+            -o-animation:mysecond 5s;
+        }
+        @keyframes mysecond{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+        @-moz-keyframes mysecond{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+        @-webkit-keyframes mysecond{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+        @-o-keyframes mysecond {
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+        /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        div.mix_animition{
+            width:100px;
+            height:100px;
+            background:red;
+            position:relative;
+            animation-name:mythird;
+            animation-duration:5s;
+            animation-timing-function:linear;/*动画速度曲线，liner表示匀速*/
+            animation-delay:2s;/*延时2s*/
+            animation-iteration-count:infinite;/*播放动画的次数，infinite表示无限次数*/
+            animation-direction:alternate;/*属性定义是否应该轮流反向播放动画*/
+            animation-play-state:running;/*属性规定动画正在运行还是暂停。*/
+            /* Firefox: */
+            -moz-animation-name:mythird;
+            -moz-animation-duration:5s;
+            -moz-animation-timing-function:linear;
+            -moz-animation-delay:2s;
+            -moz-animation-iteration-count:infinite;
+            -moz-animation-direction:alternate;
+            -moz-animation-play-state:running;
+            /* Safari and Chrome: */
+            -webkit-animation-name:mythird;
+            -webkit-animation-duration:5s;
+            -webkit-animation-timing-function:linear;
+            -webkit-animation-delay:2s;
+            -webkit-animation-iteration-count:infinite;
+            -webkit-animation-direction:alternate;
+            -webkit-animation-play-state:running;
+            /* Opera: */
+            -o-animation-name:mythird;
+            -o-animation-duration:5s;
+            -o-animation-timing-function:linear;
+            -o-animation-delay:2s;
+            -o-animation-iteration-count:infinite;
+            -o-animation-direction:alternate;
+            -o-animation-play-state:running;
+        }
+
+        @keyframes mythird{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+
+        @-moz-keyframes mythird /* Firefox */{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+
+        @-webkit-keyframes mythird /* Safari and Chrome */{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+
+        @-o-keyframes mythird /* Opera */{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+        /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        div.mix_animition_inashortway{
+            width:100px;
+            height:100px;
+            background:red;
+            position:relative;
+            animation:myforth 5s linear 2s infinite alternate;
+            /* Firefox: */
+            -moz-animation:myforth 5s linear 2s infinite alternate;
+            /* Safari and Chrome: */
+            -webkit-animation:myforth 5s linear 2s infinite alternate;
+            /* Opera: */
+            -o-animation:myforth 5s linear 2s infinite alternate;
+        }
+
+        @keyframes myforth{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+
+        @-moz-keyframes myforth /* Firefox */{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+
+        @-webkit-keyframes myforth /* Safari and Chrome */{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+
+        @-o-keyframes myforth /* Opera */{
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+        /* //////////////////////////////////////////////////////////////////////////////////////////////////// */
+        div.transmition{
+            width:100px;
+            height:100px;
+            background:yellow;
+            transition:width 2s;
+            -moz-transition:width 2s; /* Firefox 4 */
+            -webkit-transition:width 2s; /* Safari and Chrome */
+            -o-transition:width 2s; /* Opera */
+        }
+        div.transmition:hover{
+            width:300px;
+        }
+        /* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+        div.mix_transmition{
+            width:100px;
+            height:100px;
+            background:grey;
+            transition:width 2s, height 2s;
+            -moz-transition:width 2s, height 2s, -moz-transform 2s; /* Firefox 4 */
+            -webkit-transition:width 2s, height 2s, -webkit-transform 2s; /* Safari and Chrome */
+            -o-transition:width 2s, height 2s, -o-transform 2s; /* Opera */
+        }
+        div.mix_transmition:hover{
+            width:200px;
+            height:200px;
+            transform:rotate(180deg);
+            -moz-transform:rotate(180deg); /* Firefox 4 */
+            -webkit-transform:rotate(180deg); /* Safari and Chrome */
+            -o-transform:rotate(180deg); /* Opera */
+        }
+        /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+        div.complex_transimition{
+            width:100px;
+            height:100px;
+            background:yellow;
+            transition-property:width;
+            transition-duration:1s;
+            transition-timing-function:linear;
+            transition-delay:2s;
+            /* Firefox 4 */
+            -moz-transition-property:width;
+            -moz-transition-duration:1s;
+            -moz-transition-timing-function:linear;
+            -moz-transition-delay:2s;
+            /* Safari and Chrome */
+            -webkit-transition-property:width;
+            -webkit-transition-duration:1s;
+            -webkit-transition-timing-function:linear;
+            -webkit-transition-delay:2s;
+            /* Opera */
+            -o-transition-property:width;
+            -o-transition-duration:1s;
+            -o-transition-timing-function:linear;
+            -o-transition-delay:2s;
+        }
+
+        div.complex_transimition:hover{
+            width:200px;
+        }
+        /* ////////////////////////////////////////////////////////////////////////////////////////////////// */
+        /*div.complex_transimition_inashortway{*/
+            /*width:100px;*/
+            /*height:100px;*/
+            /*background:yellow;*/
+            /*transition-property:width 1s linear 2s;*/
+            /*!* Firefox 4 *!*/
+            /*-moz-transition:width 1s linear 2s;*/
+            /*!* Safari and Chrome *!*/
+            /*-webkit-transition:width 1s linear 2s;*/
+            /*!* Opera *!*/
+            /*-o-transition:width 1s linear 2s;*/
+        /*}*/
+        /*div.complex_transimition_inashortway:hover{*/
+            /*width:200px;*/
+            /*lansform:rotateX(120deg); !* Firefox *!*/
+        /*}*/
+        /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        /*.mirrorRotateLevel {          !* 水平镜像翻转 *!*/
+            /*-moz-transform:scaleX(-1);*/
+            /*-webkit-transform:scaleX(-1);*/
+            /*-o-transform:scaleX(-1);*/
+            /*transform:scaleX(-1);*/
+            /*!*兼容IE*!*/
+            /*filter:FlipH;*/
+        /*}*/
+        /*.mirrorRotateVertical {        !* 垂直镜像翻转 *!*/
+            /*-moz-transform:scaleY(-1);*/
+            /*-webkit-transform:scaleY(-1);*/
+            /*-o-transform:scaleY(-1);*/
+            /*transform:scaleY(-1);*/
+            /*!*兼容IE*!*/
+            /*filter:FlipV;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="color_animition"></div>
+<div class="color_pos_animition"></div>
+<div class="mix_animition"></div>
+<div class="mix_animition_inashortway"></div>
+<div class="transmition"></div>
+<div class="mix_transmition"></div>
+<div class="complex_transimition"></div>
+<div class="complex_transimition_inashortway"></div>
+
+<div >
+    <p>测试CSS3下镜像翻转</p>
+    <p class="mirrorRotateLevel">测试CSS3下水平镜像翻转</p>
+    <p class="mirrorRotateVertical">测试CSS3下垂直镜像翻转</p>
+</div>
+</body>
+</html>
