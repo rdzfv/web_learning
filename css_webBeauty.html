@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用css美化网页</title>
+    <style>
+        /* 加黑白色调/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        img.desaturate {
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%);
+            -moz-filter: grayscale(100%);
+            -ms-filter: grayscale(100%);
+            -o-filter: grayscale(100%);
+        }
+        /* 页面顶部的阴影/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        body:before {
+            content: "";
+            position: fixed;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            -webkit-box-shadow: 0px 0px 20px rgba(0,0,0,.8);
+            -moz-box-shadow: 0px 0px 20px rgba(0,0,0,.8);
+            box-shadow: 0px 0px 20px rgba(0,0,0,.8);
+            z-index: 100;
+        }
+        /* css画三角形 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////y*/
+        div.arrow-up {
+            width:0px;
+            height:0px;
+            border-left:5px solid transparent;  /* left arrow slant */
+            border-right:5px solid transparent; /* right arrow slant */
+            border-bottom:5px solid #2f2f2f; /* bottom, add background color here */
+            font-size:0px;
+            line-height:0px;
+            padding-top: 10px;
+        }
+        /* create an arrow that points down */
+        div.arrow-down {
+            width:0px;
+            height:0px;
+            border-left:5px solid transparent;
+            border-right:5px solid transparent;
+            border-top:5px solid #2f2f2f;
+            font-size:0px;
+            line-height:0px;
+            margin-top: 10px;
+        }
+        /* create an arrow that points left */
+        div.arrow-left {
+            width:0px;
+            height:0px;
+            border-bottom:5px solid transparent;  /* left arrow slant */
+            border-top:5px solid transparent; /* right arrow slant */
+            border-right:5px solid #2f2f2f; /* bottom, add background color here */
+            font-size:0px;
+            line-height:0px;
+            padding-top: 10px;
+        }
+
+        /* create an arrow that points right */
+        div.arrow-right {
+            width:0px;
+            height:0px;
+            border-bottom:5px solid transparent;  /* left arrow slant */
+            border-top:5px solid transparent; /* right arrow slant */
+            border-left:5px solid #2f2f2f; /* bottom, add background color here */
+            font-size:0px;
+            line-height:0px;
+            padding-top: 10px;
+        }
+        /* 计算元素宽度////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        #div1 {
+            position: absolute;
+            left: 50px;
+            width: calc(100% - 100px);
+            border: 1px solid black;
+            background-color: yellow;
+            padding: 5px;
+            text-align: center;
+        }
+        /* 文本渐变///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        [data-text] {
+            padding-top:20px;
+            position: relative;
+        }
+        [data-text]::after {
+            content: attr(data-text);
+            z-index: 10;
+            color: #e3e3e3;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), color-stop(50%, rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+        }
+        /* 盒子效果////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        p.box {
+            padding: 5px 10px;
+            margin: 10px;
+            background: #ff0030;
+            color: #fff;
+            font-size: 21px;
+            line-height: 1.3em;
+            border: 2px dashed #fff;
+            border-radius: 3px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            -moz-box-shadow: 0 0 0 4px #ff0030, 2px 1px 4px 4px rgba(10,10,0,.5);
+            -webkit-box-shadow: 0 0 0 4px #ff0030, 2px 1px 4px 4px rgba(10,10,0,.5);
+            box-shadow: 0 0 0 4px #ff0030, 2px 1px 6px 4px rgba(10,10,0,.5);
+            text-shadow: -1px -1px #aa3030;
+        }
+        /* 自定义滚动条///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: none;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: -webkit-linear-gradient(left, #547c90, #002640);
+            border: 1px solid #333;
+            box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4);
+        }
+        /* 模糊文本///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+        .blur {
+            color: transparent;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        /* 圆角丝带的效果 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+        .wrapper {
+            margin: 50px auto;
+            width: 280px;
+            height: 370px;
+            background: white;
+            border-radius: 10px;
+            -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+            -moz-box-shadow:    0px 0px 8px rgba(0,0,0,0.3);
+            box-shadow:         0px 0px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 90;
+        }
+
+        .ribbon-wrapper-green {
+            width: 85px;
+            height: 88px;
+            overflow: hidden;
+            position: absolute;
+            top: -3px;
+            right: -3px;
+        }
+
+        .ribbon-green {
+            font: bold 15px Sans-Serif;
+            color: #333;
+            text-align: center;
+            text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+            -webkit-transform: rotate(45deg);
+            -moz-transform:    rotate(45deg);
+            -ms-transform:     rotate(45deg);
+            -o-transform:      rotate(45deg);
+            position: relative;
+            padding: 7px 0;
+            left: -5px;
+            top: 15px;
+            width: 120px;
+            background-color: #BFDC7A;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
+            background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
+            background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
+            background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
+            background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
+            color: #6a6340;
+            -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+            -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+            box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+        }
+
+        .ribbon-green:before, .ribbon-green:after {
+            content: "";
+            border-top:   3px solid #6e8900;
+            border-left:  3px solid transparent;
+            border-right: 3px solid transparent;
+            position:absolute;
+            bottom: -3px;
+        }
+
+        .ribbon-green:before {
+            left: 0;
+        }
+        .ribbon-green:after {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div>
+    <img width="160px" height="100px" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1549085118035&di=5b4524185beba5335b289d5741faff6e&imgtype=0&src=http%3A%2F%2Fpic31.nipic.com%2F20130717%2F13260121_164739626122_2.jpg">
+    <img width="160px" height="100px" class="desaturate" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1549085118035&di=5b4524185beba5335b289d5741faff6e&imgtype=0&src=http%3A%2F%2Fpic31.nipic.com%2F20130717%2F13260121_164739626122_2.jpg">
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div>
+    <div class="arrow-up"></div>
+    <div class="arrow-down"></div>
+    <div class="arrow-left"></div>
+    <div class="arrow-right"></div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div>
+    <p>创建一个横跨屏幕的div，div 两边有 50px 的间隙：</p>
+    <div id="div1">一些文本...</div>
+</div>
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div class="data-text">这是h2大小的文字</div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<p class="box">这里是测试文字背景的文字</p>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<p class="blur">这里是测试模糊文本的文字</p>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div class="wrapper">
+    <div class="ribbon-wrapper-green">
+        <div class="ribbon-green">NEWS</div>
+    </div>
+</div>
+
+</body>
+</html>
