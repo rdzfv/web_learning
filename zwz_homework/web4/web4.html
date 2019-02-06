@@ -1,0 +1,202 @@
+<html>
+<head>
+    <style>
+        .container{
+            width: 1000px;
+            height: 2000px;
+            background-color:aquamarine;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container" class="container"></div>
+<script>
+    document.write(Date());
+    var d = new Date();
+    document.write("<br />")
+    document.write(d.getDate());
+    document.write("<br />")
+    document.write(d.getDay());
+    document.write("<br />")
+    document.write(d.getMonth());
+    document.write("<br />")
+    document.write(d.getFullYear());
+    document.write("<br />")
+    document.write(d.getHours());
+    document.write("<br />")
+    document.write(d.getMinutes());
+    document.write("<br />")
+    document.write(d.getSeconds());
+    document.write("<br />")
+    document.write("<br />")
+    document.write("<br />")
+
+
+
+    var s="201706120122";
+    var s1=s.slice(0,4);
+    document.write(s1);
+    document.write("<br />")
+    for(i=s.length-3;i<s.length;i++){
+        document.write(s[i]);
+    }
+    document.write("<br />")
+    var n=s.indexOf("010");
+    document.write(n);
+    document.write("<br />")
+
+    var s2=s.split("0");
+    document.write(s2.length-1);
+    document.write("<br />")
+
+    document.write(s.length);
+    document.write("<br />")
+    document.write("<br />")
+    document.write("<br />")
+
+    var arr=[1,2,3];
+    document.write(arr.length);
+    arr[100] = 100;
+    document.write("<br />")
+    document.write(arr.length);
+    for(i=0;i<arr.length;i++){
+        document.write(arr[i]);
+        document.write(" ");
+    }
+    for(i=0;i<arr.length;i++){
+        arr[i]=i+1;
+    }
+    document.write("<br />")
+    for(i=0;i<arr.length;i++){
+        document.write(arr[i]);
+        document.write(" ");
+    }
+    document.write("<br />")
+    var arr1=[];
+    arr1=arr.slice(2,7);
+    for(i=0;i<arr1.length;i++){
+        document.write(arr1[i]);
+        document.write(" ");
+    }
+    document.write("<br />")
+    var b;
+    b = arr.join("");
+    document.write(b);
+    document.write("<br />")
+    var arrayOfDouble = arr.map(function (item) {
+        return item * 2;
+    });
+    for(i=0;i<arrayOfDouble.length;i++){
+        document.write(arrayOfDouble[i]);
+        document.write(" ");
+    }
+    document.write("<br />");
+    document.write("<br />");
+    document.write("<br />");
+
+    function myRandom(){
+        var num=Math.floor(Math.random()*100+1);
+        return num;
+    }
+    document.write("<br/>");
+    ////////////随机生成入数组//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var arr2=[,,,];
+    function myDisorder(arr){
+        for(i=0;i<arr.length;i++){
+            arr[i]=Math.floor(Math.random()*100+1);
+            document.write(" ");
+        }
+        return arr;
+    }
+    var arr3=myDisorder(arr2);
+    for(i=0;i<arr2.length;i++){
+        document.write(arr2[i]);
+        document.write(" ");
+    }
+    document.write("<br />");
+    ////////////洗牌函数/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Array.prototype.shuffle = function() {
+        var input = this;
+        for (var i = input.length-1; i >=0; i--) {
+            var randomIndex = Math.floor(Math.random()*(i+1));
+            var itemAtIndex = input[randomIndex];
+            input[randomIndex] = input[i];
+            input[i] = itemAtIndex;
+        }
+        return input;
+    }
+    var tempArray = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+    tempArray.shuffle();
+    document.write(tempArray);
+    document.write("<br />");
+    document.write("<br />");
+    document.write("<br />");
+    ////////////构造函数/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function chess(color,x,y){
+        this.color = color;
+        this.x = x;
+        this.y = y;
+        this.showChess=function(){
+            var block=document.createElement("div");
+            block.style.height="10px";
+            block.style.width="10px";
+            block.style.backgroundColor=c.color;
+            block.style.position="absolute";
+            block.style.top=c.y;
+            block.style.left=c.x;
+            block.style.zIndex="999";
+            block.style.borderRadius="50%";
+            var container=document.getElementById("container");
+            container.appendChild(block);
+        }
+        // this.sayHello = function(){
+        //     console.log(this.name +"say hello");
+        // }
+    }
+    var c = new chess("black",10,20);
+    c.showChess();
+    // boy.sayHello();
+    // document.write(c.color);
+    c.x=100;
+    c.y=50;
+    c.showChess();
+    var b = new chess("black",100,50);
+    document.write(c==b);
+    document.write(c===b);
+    document.write("<br />");
+    document.write("<br />");
+    document.write("<br />");
+    ////////////字符串和数字运算///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var a = [[0.1, '2'], [0.2, 5, {x: 100, y: 50, color: 'white'}]];
+    document.write(a.length);
+    document.write("<br />");
+    document.write(a[0].length);
+    document.write("<br />");
+    document.write(a[1].length);
+    document.write("<br />");
+    document.write( a[0][0]+a[0][1]);
+    document.write("<br />");
+    document.write( a[0][1]+a[0][0]);
+    document.write("<br />");
+    document.write(a[0][0]+a[0][1] > a[1][1]);
+    document.write("<br />");
+    document.write(a[0][1]+a[0][0] > a[1][1]);
+    document.write("<br />");
+    document.write( a[0][0]+a[1][0]);
+    document.write("<br />");
+    document.write( a[0][0]+a[1][2]);
+    document.write("<br />");
+    document.write( a[0][0]+a[1][2]);
+    document.write("<br />");
+    document.write( a[0][0]*a[1][2]);
+    // NaN == NaN 成立吗？NaN != NaN 呢？那该如何判断一个变量值是不是 NaN
+    document.write("<br />");
+    document.write(NaN == NaN);
+    // 除了NAN，一般变量与自身都是相等的，因此if(! test_var==test_var)返回true，则test_var的值是NAN
+</script>
+</body>
+</html>
