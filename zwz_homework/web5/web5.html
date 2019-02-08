@@ -1,0 +1,121 @@
+<html>
+<head>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 1000px;
+            height: 600px;
+            background-color: antiquewhite;
+            border-color: black;
+            border-width: 2px;
+            border-style: solid;
+            overflow:scroll;
+        }
+        .inputs{
+            width: 1000px;
+            height: 50px;
+            border-top-color: black;
+            border-top-width: 2px;
+            border-top-style: solid;
+            background-color: aquamarine;
+            position: absolute;
+            top: 550px;
+        }
+        .input{
+            width: 830px;
+            height: 40px;
+            margin-top: 5px;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        .submit{
+            width: 70px;
+            height: 40px;
+            margin-left: 5px;
+            padding: 0;
+            /* margin-top: 5px; */
+        }
+        #dv{position:absolute;left:-9999999px;top:0;width:9999px;}
+    </style>
+</head>
+<body>
+<div id="dv"><label></label></div>
+<div class="container">
+    <div class="records" id="records"></div>
+    <div class="inputs">
+        <input class="input" id="input">
+        <button class="submit" id="submit1">用户1提交</button>
+        <button class="submit" id="submit2">用户2提交</button>
+    </div>
+</div>
+<script>
+    function talk(content,name){
+        this.content = content;
+        this.name = name;
+        this.showTalk=function(){
+            var block=document.createElement("div");
+            var dv=document.getElementById("dv");
+            dv.firstChild.innerHTML = content;
+            block.style.height=20;
+            block.style.width=dv.firstChild.offsetWidth+20;
+            //console.log(name);
+            if(name==1){color="cornflowerblue"}else{color="hotpink"};
+            // console.log(color);
+            //border: 2px dashed #fff;
+            block.style.borderStyle="dashed";
+            block.style.borderWidth="2px";
+            block.style.borderColor="#fff";
+            //border-radius: 3px;
+            block.style.borderRadius="3px";
+            //box-shadow: 0 0 0 4px #ff0030, 2px 1px 6px 4px rgba(10,10,0,.5);
+            // padding: 5px 10px;
+            // margin: 10px;
+            block.style.backgroundColor=color;
+            block.style.zIndex="999";
+            if(name==1){
+                block.style.marginLeft="10px";
+                block.style.marginTop="12px";
+                block.style.boxShadow="0 0 0 4px cornflowerblue"
+            }else{
+                //console.log(block.style.width);
+                marginWidth=990-block.style.width;
+                console.log(marginWidth);
+                block.style.marginLeft="marginWidth";
+                block.style.marginTop="12px";
+                block.style.boxShadow="0 0 0 4px hotpink"
+            };
+
+            block.innerHTML=content;
+            var records=document.getElementById("records");
+            records.appendChild(block);
+        }
+    }
+    // var c = new chess("black",10,20);
+    // c.showChess();
+    var submit1 =document.getElementById("submit1");
+    var submit2 =document.getElementById("submit2");
+    var input=document.getElementById("input")
+    submit1.onclick=function(){
+        // console.log(1);
+        var name=1;
+        content=input.value;
+        //console.log(content);
+        var c = new talk(content,name);
+        c.showTalk();
+        input.value="";
+    }
+    submit2.onclick=function(){
+        // console.log(1);
+        var name=0;
+        content=input.value;
+        //console.log(content);
+        var c = new talk(content,name);
+        c.showTalk();
+        input.value="";
+    }
+</script>
+</body>
+</html>
