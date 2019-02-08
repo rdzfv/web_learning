@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>五子棋</title>
+    <style>
+        *{margin:0px;padding:0px;}
+        html{width:100%;height:100%;}
+        body{width:100%;height:100%;}
+        .canv{margin:10px 10px;}
+        .canvdiv{width:840px;height:600px;position: absolute;top:10px;left:10px;z-index:999;display:none}
+        #but{position: absolute;left:870px;top:10px;}
+    </style>
+    <script type="text/javascript">
+        var jsonDian={};//点集
+        var step=1;
+        var bai;
+        var hei;
+        window.onload=function(){
+            var c=document.getElementById("myCanvas");
+            var ctx=c.getContext("2d");
+            var x;
+            var y;
+            bai = new Image();
+            bai.src = "bai.png";
+            hei = new Image();
+            hei.src = "hei.png";
+            ctx.lineWidth=1;
+            ctx.fillStyle="#999";
+            ctx.fillRect(0,0,840,600);
+            ctx.translate(0.5,0.5);
+            for (var i = 0; i <= 840; i += 40) {//每隔40px绘制一条竖线棋盘和横线棋盘
+                //绘制横线
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(840, i);
+                ctx.closePath();
+                ctx.stroke();
+
+                //绘制纵线
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, 600);
+                ctx.closePath();
+                ctx.stroke();
+            }
+
+            for (var i = 0; i <= 840; i += 40) {
+                x=i;
+                for (var j = 0; j <= 600; j += 40) {
+                    y=j;
+                    jsonDian[x+""+y]={ox:x,oy:y,flag:true,piece:null};
+                }
+            }
+
+            c.onmousedown=function(e){
+                e=e||event;
+                fallPiece(e,ctx);
+            }
+            //重来点击事件
+            document.getElementById("but").onclick=function(){
+                location.replace(location.href);
+            }
+        }
+
+        function fallPiece(event,ctx){
+            var x=parseInt(event.clientX-10);
+            var y=parseInt(event.clientY-10);
+            x=x%40!=0?(x%40>20?(x-(x%40))+40:x-(x%40)):x;
+            y=y%40!=0?(y%40>20?(y-(y%40))+40:y-(y%40)):y;
+            if(jsonDian[x+""+y].flag==false){
+                alert("请点击在有效区域");
+                return;
+            }
+            //记录奇偶次数，来进行白黑妻子交替下棋
+            if(step==1){
+                ctx.drawImage(hei,jsonDian[x+""+y].ox-18,jsonDian[x+""+y].oy-18);
+                jsonDian[x+""+y].piece="hei";
+                winorlose(jsonDian[x+""+y],"hei");
+                jsonDian[x+""+y].flag=false;
+                step=2;
+            }else{
+                ctx.drawImage(bai,jsonDian[x+""+y].ox-18,jsonDian[x+""+y].oy-18);
+                jsonDian[x+""+y].piece="bai";
+                winorlose(jsonDian[x+""+y],"bai");
+                jsonDian[x+""+y].flag=false;
+                step=1;
+            }
+        }
+        //落子
+        function winorlose(point,piece){
+            var updown=0;
+            var leftright=0;
+            var oblique1=0;
+            var oblique2=0;
+            for(var i=point.oy; i>=0; i-=40){
+                if(jsonDian[point.ox+""+i].piece!==piece||typeof jsonDian[point.ox+""+i].piece===null){
+                    break;
+                }
+                updown++;
+            }
+            for(var i=point.oy+40; i<=600; i+=40){
+                if(jsonDian[point.ox+""+i].piece!==piece||typeof jsonDian[point.ox+""+i].piece===null){
+                    break;
+                }
+                updown++;
+            }
+
+            for(var i=point.ox; i>=0; i-=40){
+                if(jsonDian[i+""+point.oy].piece!==piece||typeof jsonDian[i+""+point.oy].piece===null){
+                    break;
+                }
+                leftright++;
+            }
+            for(var i=point.ox+40; i<=840; i+=40){
+                if(jsonDian[i+""+point.oy].piece!==piece||typeof jsonDian[i+""+point.oy].piece===null){
+                    break;
+                }
+                leftright++;
+            }
+            for(var i=point.ox,j=point.oy; i>=0,j>=0;i-=40,j-=40){
+                i=i<0?0:i;j=j<0?0:j;
+                if(jsonDian[i+""+j].piece!==piece||typeof jsonDian[i+""+j].piece===null){
+                    break;
+                }
+                oblique1++;
+            }
+            for(var i=point.ox+40,j=point.oy+40; i<=840,j<=600;i+=40,j+=40){
+                i=i>840?840:i;j=j>600?600:j;
+                if(jsonDian[i+""+j].piece!==piece||typeof jsonDian[i+""+j].piece===null){
+                    break;
+                }
+                oblique1++;
+            }
+
+            for(var i=point.ox,j=point.oy; i<=840,j>=0;i+=40,j-=40){
+                i=i>840?840:i;j=j<0?0:j;
+                if(jsonDian[i+""+j].piece!==piece||typeof jsonDian[i+""+j].piece===null){
+                    break;
+                }
+                oblique2++;
+            }
+            for(var i=point.ox-40,j=point.oy+40; i>=0,j<=600;i-=40,j+=40){
+                i=i<0?0:i;j=j>600?600:j;
+                //alert(i+"---"+j);
+                if(jsonDian[i+""+j].piece!==piece||typeof jsonDian[i+""+j].piece===null){
+                    break;
+                }
+                oblique2++;
+            }
+
+            if(updown>=5||leftright>=5||oblique1>=5||oblique2>=5){
+                if(piece=="hei"){
+                    alert("黑子胜利");
+                    document.getElementById("jinzhi").style.display="block";
+                }else{
+                    alert("白子胜利");
+                    document.getElementById("jinzhi").style.display="block";
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" class="canv" width="840" height="600" style="border:1px solid #d3d3d3;">1111</canvas>
+<button id="but">重来</button>
+<div class="canvdiv" id="jinzhi"></div>
+</body>
+
+</html>
