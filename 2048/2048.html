@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2048</title>
+    <link rel="stylesheet" href="2048.css">
+</head>
+<body>
+<!--1.得分：score    这里是得分记录板-->
+<p>SCORE:
+    <span id="score">0</span>
+</p>
+    <!--2.接下来采用代码补全的方式来设计一个4*4的游戏界面-->
+    <!--代码补全：  div#gridPanel>div#c00*16 +TAB -->
+    <div id="gridPanel">
+        <div id="c00"></div>
+        <div id="c01"></div>
+        <div id="c02"></div>
+        <div id="c03"></div>
+ 
+        <div id="c10"></div>
+        <div id="c11"></div>
+        <div id="c12"></div>
+        <div id="c13"></div>
+ 
+        <div id="c20"></div>
+        <div id="c21"></div>
+        <div id="c22"></div>
+        <div id="c23"></div>
+ 
+        <div id="c30"></div>
+        <div id="c31"></div>
+        <div id="c32"></div>
+        <div id="c33"></div>
+    </div>
+<!--3.接下来是游戏结束面板-->
+<div id="gameover">
+    <p>
+        GAME OVER!<br>
+        SCORE:<span id="final">0</span><br>
+        <a href="javascript:start()">TRY AGAIN!</a>
+    </p>
+</div>
+<script src="2048.js"></script>
+</body>
+</html>
