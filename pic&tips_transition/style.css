@@ -1,0 +1,103 @@
+figure{
+    position: relative;
+    float: left;
+    padding: 0px;
+    margin: 5px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.long_pic{
+    width: 30%;
+    height: 80%;
+}
+.wide_pic{
+    width: 45%;
+    height: 100%;
+}
+figcaption{
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    top: 250px;
+    /* color: black;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3); */
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.wide_pic figcaption{
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    left: 10%;
+    top: 200px;
+    /* color: black;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3); */
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.pic_style1{/*第一个图片的移动效果*/
+    -webkit-transform: translate3d(-10px,0,0);
+    -webkit-transition: transform 0.3s;
+}
+.pic_style3{/*第一个图片的移动效果*/
+    -webkit-transform: scale3d(0.9,0.9,1);
+    -webkit-transition: transform 0.3s;
+}
+.words1{
+    -webkit-transform: translate3d(-350px,0,0);
+    -webkit-transition: opacity 0.3s,transform 0.3s;
+}
+.words2{
+    -webkit-transform: translate3d(-350px,0,0);
+    -webkit-transition: opacity 0.3s 0.2s,transform 0.3s 0.2s;
+}
+.words11{
+    -webkit-transform: translate3d(0,20px,0);
+    -webkit-transition: opacity 0.3s,transform 0.3s;
+}
+.words12{
+    -webkit-transform: translate3d(0,20px,0);
+    -webkit-transition: opacity 0.3s 0.1s,transform 0.3s 0.1s;
+}
+.words21{
+    -webkit-transform:  translate3d(0,50px,0) ;
+    -webkit-transition: opacity 0.3s,transform 0.3s;
+} 
+.words22{
+    -webkit-transform:  translate3d(0,50px,0) ;
+    -webkit-transition: opacity 0.3s 0.1s,transform 0.3s 0.1s;
+}
+h2{
+    background:rgba(55, 55, 55, 0.6);
+    opacity: 0;
+}
+p{
+    background:rgba(100, 100, 100, 0.4);
+    opacity: 0;
+}
+.test2{
+    background: #333;
+}
+.test2 div{
+    border: 2px solid white;
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    -webkit-transform: translate3d(0,-450px,0) rotate(180deg);
+    opacity: 0;
+    -webkit-transition: opacity 0.3s,transform 0.2s;
+}
+.fig_style2{
+    width: 60%;
+    left: 20%;
+}
+figure:hover figcaption h2,
+figure:hover figcaption p,
+figure:hover .pic_style1,
+figure:hover .pic_style3,
+figure:hover div{
+    opacity: 1;
+    -webkit-transform: translate3d(0,0,0) scale3d(1,1,1) rotate(0deg) skew(0deg);
+}
